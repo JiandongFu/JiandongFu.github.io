@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>攻防世界web入门wp | JD's blog</title><meta name="author" content="Fu Jiandong"><meta name="copyright" content="Fu Jiandong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="view source题目描述:X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 打开网页，右键失灵。F12查看网页源码，得到FLAG。 get_post题目描述:X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？ 打开网页，显示如下  在网址后加?a&#x3D;1  F12，打开HackBar，LOAD下URL后点开Use POST method，Body中输入b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界web入门wp">
+<meta property="og:url" content="http://example.com/2025/01/02/CTF-1/index.html">
+<meta property="og:site_name" content="JD&#39;s blog">
+<meta property="og:description" content="view source题目描述:X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 打开网页，右键失灵。F12查看网页源码，得到FLAG。 get_post题目描述:X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？ 打开网页，显示如下  在网址后加?a&#x3D;1  F12，打开HackBar，LOAD下URL后点开Use POST method，Body中输入b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/profile.jpg">
+<meta property="article:published_time" content="2025-01-02T02:23:18.000Z">
+<meta property="article:modified_time" content="2025-01-02T08:34:19.192Z">
+<meta property="article:author" content="Fu Jiandong">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/profile.jpg"><link rel="shortcut icon" href="/img/1.png"><link rel="canonical" href="http://example.com/2025/01/02/CTF-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":0,"languages":{"author":"作者: Fu Jiandong","link":"链接: ","source":"来源: JD's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '攻防世界web入门wp',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  isShuoshuo: false
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/profile.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-color: rgb(0, 47, 167);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/1.png" alt="Logo"><span class="site-name">JD's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">攻防世界web入门wp</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">攻防世界web入门wp</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-02T02:23:18.000Z" title="发表于 2025-01-02 10:23:18">2025-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-02T08:34:19.192Z" title="更新于 2025-01-02 16:34:19">2025-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="view-source"><a href="#view-source" class="headerlink" title="view source"></a>view source</h1><p>题目描述:X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。</p>
+<p>打开网页，右键失灵。F12查看网页源码，得到FLAG。</p>
+<h1 id="get-post"><a href="#get-post" class="headerlink" title="get_post"></a>get_post</h1><p>题目描述:X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？</p>
+<p>打开网页，显示如下</p>
+<p><img src="/posts_img/CTF-1/1.png" alt="image"></p>
+<p>在网址后加?a=1</p>
+<p><img src="/posts_img/CTF-1/2.png" alt="image"></p>
+<p>F12，打开HackBar，LOAD下URL后点开Use POST method，Body中输入b=2，得到FLAG。</p>
+<h1 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h1><p>题目描述:X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。</p>
+<p>Robots协议：俗称君子协议，也叫robots.txt是一种存放于网站根目录下的ASCII编码的文本文件。 robots.txt是搜索引擎中访问网站的时候要查看的第一个文件。当一个网络蜘蛛（网络搜索引擎的漫游器）访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果存在，搜索机器人就会按照该文件中的内容来确定访问的范围；如果该文件不存在，所有的搜索蜘蛛将能够访问网站上所有没有被口令保护的页面。 如果想单独定义搜索引擎的漫游器访问子目录时的行为，那么可以将自定的设置合并到根目录下的robots.txt，或者使用robots元数据（Metadata）。 robots协议并不是一个规范，而只是约定俗成的，所以并不能保证网站的隐私。</p>
+<p>首先查看robots.txt内容，在url后加上/robots.txt。</p>
+<p><img src="/posts_img/CTF-1/3.png" alt="image"></p>
+<p>原url后加上f1ag_1s_h3re.php得到FLAG。</p>
+<h1 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h1><p>题目描述:X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！</p>
+<p>在进行网站安全检查时，常常需要注意网站根目录下的备份文件，因为这些文件可能会包含敏感信息或源码泄露的风险。常见的 index.php 备份文件名称有：</p>
+<ul>
+<li>index.php.bak - 通常的备份文件扩展名</li>
+<li>index.php~ - 由一些文本编辑器（如 vim、emacs）创建的备份文件</li>
+<li>index.php.bkp - 另一种常见的备份文件扩展名</li>
+<li>index.php.old - 表示旧版本的文件</li>
+<li>index.php.orig - 原始文件的备份</li>
+<li>index.php.save - 保存的文件版本</li>
+<li>index.php_backup - 手动备份时可能使用的文件名</li>
+<li>index.php.txt - 可能是文本文件备份，但仍包含代码</li>
+</ul>
+<p>在url后加上index.php.bak。下载文件打开获得FLAG。</p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>题目描述：X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’</p>
+<p>Cookie是保存在客户端（我们自己的本地电脑）的纯文本文件。比如txt文件。当我们使用自己的电脑通过浏览器进行访问网页的时候，服务器就会生成一个证书并返回给我的浏览器并写入我们的本地电脑。这个证书就是cookie。一般来说cookie都是服务器端写入客户端的纯文本文件。一般网络用户习惯用其复数形式 Cookies，指某些网站为了辨别用户身份、进行 Session 跟踪而存储在用户本地终端上的数据，而这些数据通常会经过加密处理。</p>
+<p>F12，F5刷新，网络，可看到cookie值为cookie.php。</p>
+<p><img src="/posts_img/CTF-1/4.png" alt="image"></p>
+<p>url跳转至cookie.php。F12，网络，标头中获得FLAG。</p>
+<p><img src="/posts_img/CTF-1/5.png" alt="image"></p>
+<h1 id="disabled-button"><a href="#disabled-button" class="headerlink" title="disabled_button"></a>disabled_button</h1><p>题目描述:X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？</p>
+<p>F12发现按钮元素下存在disabled，删除后按钮可点击，获得FLAG。</p>
+<h1 id="simple-js"><a href="#simple-js" class="headerlink" title="simple_js"></a>simple_js</h1><p>题目描述:小宁发现了一个网页，但却一直输不对密码。(Flag格式为 Cyberpeace{xxxxxxxxx} )</p>
+<p>F12，查看JS代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">dechiffre</span>(<span class="params">pass_enc</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> pass = <span class="string">&quot;70,65,85,88,32,80,65,83,83,87,79,82,68,32,72,65,72,65&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> tab  = pass_enc.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> tab2 = pass.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>);<span class="keyword">var</span> i,j,k,l=<span class="number">0</span>,m,n,o,p = <span class="string">&quot;&quot;</span>;i = <span class="number">0</span>;j = tab.<span class="property">length</span>;</span></span><br><span class="line"><span class="language-javascript">                        k = j + (l) + (n=<span class="number">0</span>);</span></span><br><span class="line"><span class="language-javascript">                        n = tab2.<span class="property">length</span>;</span></span><br><span class="line"><span class="language-javascript">                        <span class="keyword">for</span>(i = (o=<span class="number">0</span>); i &lt; (k = j = n); i++ )&#123;o = tab[i-l];p += <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>((o = tab2[i]));</span></span><br><span class="line"><span class="language-javascript">                                <span class="keyword">if</span>(i == <span class="number">5</span>)<span class="keyword">break</span>;&#125;</span></span><br><span class="line"><span class="language-javascript">                        <span class="keyword">for</span>(i = (o=<span class="number">0</span>); i &lt; (k = j = n); i++ )&#123;</span></span><br><span class="line"><span class="language-javascript">                        o = tab[i-l];</span></span><br><span class="line"><span class="language-javascript">                                <span class="keyword">if</span>(i &gt; <span class="number">5</span> &amp;&amp; i &lt; k-<span class="number">1</span>)</span></span><br><span class="line"><span class="language-javascript">                                        p += <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>((o = tab2[i]));</span></span><br><span class="line"><span class="language-javascript">                        &#125;</span></span><br><span class="line"><span class="language-javascript">        p += <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(tab2[<span class="number">17</span>]);</span></span><br><span class="line"><span class="language-javascript">        pass = p;<span class="keyword">return</span> pass;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">String</span>[<span class="string">&quot;fromCharCode&quot;</span>](<span class="title function_">dechiffre</span>(<span class="string">&quot;\x35\x35\x2c\x35\x36\x2c\x35\x34\x2c\x37\x39\x2c\x31\x31\x35\x2c\x36\x39\x2c\x31\x31\x34\x2c\x31\x31\x36\x2c\x31\x30\x37\x2c\x34\x39\x2c\x35\x30&quot;</span>));</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    h = <span class="variable language_">window</span>.<span class="title function_">prompt</span>(<span class="string">&#x27;Enter password&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">alert</span>( <span class="title function_">dechiffre</span>(h) );</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>中间处理逻辑有些繁琐，但发现dechiffre返回值与传入值pass_enc无关，无论输入什么都显示错误。真正密码在<code>String[&quot;fromCharCode&quot;](dechiffre(&quot;\x35\x35\x2c\x35\x36\x2c\x35\x34\x2c\x37\x39\x2c\x31\x31\x35\x2c\x36\x39\x2c\x31\x31\x34\x2c\x31\x31\x36\x2c\x31\x30\x37\x2c\x34\x39\x2c\x35\x30&quot;));</code>，python输出字符串为55,56,54,79,115,69,114,116,107,49,50，ASCII码对应字符串为786OsErtk12，即为FLAG。</p>
+<h1 id="xff-referer"><a href="#xff-referer" class="headerlink" title="xff_referer"></a>xff_referer</h1><p>题目描述:X老师告诉小宁其实xff和referer是可以伪造的。</p>
+<ul>
+<li>X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项。</li>
+<li>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的。</li>
+</ul>
+<p>显示ip地址必须为123.123.123.123，使用HackBar，MODIFY HEADER添加X-Forwarded-For，值为123.123.123.123，显示必须来自<a target="_blank" rel="noopener" href="https://www.google.com">https://www.google.com</a>，再添加Referer，值为<a target="_blank" rel="noopener" href="https://www.google.com">https://www.google.com</a>，显示FLAG。</p>
+<h1 id="weak-auth"><a href="#weak-auth" class="headerlink" title="weak_auth"></a>weak_auth</h1><p>题目描述:小宁写了一个登陆验证页面，随手就设了一个密码。</p>
+<p>随便输入账号密码，显示please log in as admin，尝试admin admin，显示password error。使用burpsuite爆破</p>
+<p>$爆破过程待补充$</p>
+<p>获得密码123456，登录获得FLAG。</p>
+<h1 id="command-execution"><a href="#command-execution" class="headerlink" title="command_execution"></a>command_execution</h1><p>题目描述:小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。</p>
+<p>没有防火墙，可在ping命令后拼接其他命令。拼接 <code>|find / -name &quot;*flag*&quot;</code>查找flag相关文件，找到home文件夹下存在flag.txt，拼接<code>|cat /home/flag.txt</code>，得到FLAG。</p>
+<h1 id="simple-php"><a href="#simple-php" class="headerlink" title="simple_php"></a>simple_php</h1><p>题目描述:小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;config.php&quot;</span>);</span><br><span class="line"><span class="variable">$a</span>=@<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=@<span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$a</span>==<span class="number">0</span> <span class="keyword">and</span> <span class="variable">$a</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$b</span>))&#123;</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$b</span>&gt;<span class="number">1234</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>php中有两种比较的符号<code>==</code>与<code>===</code>。<code>==</code>在进行比较的时候，会先将字符串类型转化成相同，再比较。如果一个数值和字符串进行比较的时候，会将字符串转换成数值。<code>===</code>在进行比较的时候，会先判断两种字符串的类型是否相等（不相等直接返回false），再比较。</li>
+<li>is_numeric() 函数用于检测变量是否为数字或数字字符串。如果指定的变量是数字和数字字符串则返回 TRUE，否则返回 FALSE。</li>
+</ul>
+<p>所以可以a=a，and前为真，同时因为a的ASCII码&gt;0（0a，0b等等都行），则后面的$a也为真。这样第一个if为真，拿到一半FLAG。然后b=12345a，获得完整FLAG。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Fu Jiandong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/02/CTF-1/">http://example.com/2025/01/02/CTF-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">JD's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/web/">web</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2024/12/30/powerCommunication-1/" title="powerCommunication_1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">powerCommunication_1</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/profile.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Fu Jiandong</div><div class="author-info-description">我的征途是石沉大海</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#view-source"><span class="toc-number">1.</span> <span class="toc-text">view source</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#get-post"><span class="toc-number">2.</span> <span class="toc-text">get_post</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#robots%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">robots协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#backup"><span class="toc-number">4.</span> <span class="toc-text">backup</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cookie"><span class="toc-number">5.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#disabled-button"><span class="toc-number">6.</span> <span class="toc-text">disabled_button</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#simple-js"><span class="toc-number">7.</span> <span class="toc-text">simple_js</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xff-referer"><span class="toc-number">8.</span> <span class="toc-text">xff_referer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#weak-auth"><span class="toc-number">9.</span> <span class="toc-text">weak_auth</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#command-execution"><span class="toc-number">10.</span> <span class="toc-text">command_execution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#simple-php"><span class="toc-number">11.</span> <span class="toc-text">simple_php</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/CTF-1/" title="攻防世界web入门wp">攻防世界web入门wp</a><time datetime="2025-01-02T02:23:18.000Z" title="发表于 2025-01-02 10:23:18">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/30/powerCommunication-1/" title="powerCommunication_1">powerCommunication_1</a><time datetime="2024-12-30T08:42:23.000Z" title="发表于 2024-12-30 16:42:23">2024-12-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/30/letter/" title="因为我太害羞了，所以没有把这封信寄出去">因为我太害羞了，所以没有把这封信寄出去</a><time datetime="2024-12-30T08:38:21.000Z" title="发表于 2024-12-30 16:38:21">2024-12-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/27/hello-world/" title="施工完毕！">施工完毕！</a><time datetime="2024-12-27T01:32:21.736Z" title="发表于 2024-12-27 09:32:21">2024-12-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/foot.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Fu Jiandong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
