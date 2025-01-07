@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>powerCommunication-2 | JD's blog</title><meta name="author" content="Fu Jiandong"><meta name="copyright" content="Fu Jiandong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="(转载自知乎作者Nikki https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;nikki-78-25) SDH概念SDH（Synchronous Digital Hierarchy，数字同步体系）网是由一些SDH的网络单元（NE）组成的，在光纤上进行同步信息传输、复用、分插和交叉连接的网络。 SDH帧结构具体可看书。 复用映射SDH的复用结构是由一些基本复用单元组成的有若干中间复用步骤的复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="powerCommunication-2">
+<meta property="og:url" content="http://example.com/2025/01/07/powerCommunication-2/index.html">
+<meta property="og:site_name" content="JD&#39;s blog">
+<meta property="og:description" content="(转载自知乎作者Nikki https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;nikki-78-25) SDH概念SDH（Synchronous Digital Hierarchy，数字同步体系）网是由一些SDH的网络单元（NE）组成的，在光纤上进行同步信息传输、复用、分插和交叉连接的网络。 SDH帧结构具体可看书。 复用映射SDH的复用结构是由一些基本复用单元组成的有若干中间复用步骤的复">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/profile.jpg">
+<meta property="article:published_time" content="2025-01-07T13:49:03.000Z">
+<meta property="article:modified_time" content="2025-01-07T14:20:02.871Z">
+<meta property="article:author" content="Fu Jiandong">
+<meta property="article:tag" content="传输">
+<meta property="article:tag" content="OTN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/profile.jpg"><link rel="shortcut icon" href="/img/1.png"><link rel="canonical" href="http://example.com/2025/01/07/powerCommunication-2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":0,"languages":{"author":"作者: Fu Jiandong","link":"链接: ","source":"来源: JD's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'powerCommunication-2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  isShuoshuo: false
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/profile.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-color: rgb(0, 47, 167);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/1.png" alt="Logo"><span class="site-name">JD's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">powerCommunication-2</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">powerCommunication-2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-07T13:49:03.000Z" title="发表于 2025-01-07 21:49:03">2025-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-07T14:20:02.871Z" title="更新于 2025-01-07 22:20:02">2025-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BC%A0%E8%BE%93/">传输</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>(转载自知乎作者Nikki <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/nikki-78-25">https://www.zhihu.com/people/nikki-78-25</a>)</p>
+<h1 id="SDH"><a href="#SDH" class="headerlink" title="SDH"></a>SDH</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>SDH（Synchronous Digital Hierarchy，数字同步体系）网是由一些SDH的网络单元（NE）组成的，在光纤上进行同步信息传输、复用、分插和交叉连接的网络。</p>
+<p>SDH帧结构具体可看书。</p>
+<h2 id="复用映射"><a href="#复用映射" class="headerlink" title="复用映射"></a>复用映射</h2><p>SDH的复用结构是由一些基本复用单元组成的有若干中间复用步骤的复用结构与过程。</p>
+<p>从SDH的复用结构中归纳起来，其基本复用单元有C（容器）、VC（虚容器）、AU管理单元(AUG管理单元组)和TU支路单元(TUG支路单元组)。</p>
+<ul>
+<li><p>容器C</p>
+<p>  容器就是一种装载各种速率业务信号的信息结构。</p>
+<p>  容器种类：5种标准容器。</p>
+<p>  C-11 1.544Mb/s</p>
+<p>  C-12 2.048Mb/s</p>
+<p>  C-2 6.312Mb/s</p>
+<p>  C-3 34.368（或44.736）Mb/s</p>
+<p>  C-4 139.264Mb/s</p>
+<p>  也就是说，不同的业务速率它用不同的容器来加以承载，这是很好理解的。速率不一样，中间有效的信息比特数不一样，那么信息结构中间包含的字节数也不一样。但是归纳起来，总共就只有上面的5种不同标准的容器。以C-4为例：</p>
+<p>  <img src="/posts_img/pc_2/1.png" alt="image"></p>
+</li>
+<li><p>虚容器VC</p>
+<p>  除了容器之后，后面还有一种容器，叫虚容器，用VC来表示。</p>
+<p>  虚容器是用来支持SDH的通道层连接的信息结构（虚容器属于SDH传送网分层模型中通道层的信息结构）。</p>
+<p>  换句话说，在通道层中间所传输的基础的基本的颗粒的大小就是虚容器VC，当然虚容器也有大小之分，承载大速率和小速率是不一样的。</p>
+<p>  组成：虚容器是由标准容器C的输出信号再加上用以对信号进行维护与管理的通道开销（POH）构成。</p>
+<p>  VC-4是由C-4加上通道开销组成。而通道开销是在C-4的前面加一列9个字节POH。那么构成的VC-4结构如下图所示。</p>
+<p>  <img src="/posts_img/pc_2/2.png" alt="image"></p>
+</li>
+<li><p>管理单元AU和管理单元组AUG</p>
+<p>  管理单元（AU）是提供高阶通道层和复用段层之间适配的信息结构。</p>
+<p>  AU的组成：由一个高阶VC-n和一个相应的管理单元指针（AU-PTR）构成。</p>
+<p>  这个指针是在它的第四行加的。指针同样是一行9个字节。加了指针后的信息结构就是AU-4，那么一个AU-4可以放到一个AUG-1（管理单元组1）中间，也就意味着AUG-1的信息结构与AU-4的信息结构是一样的。</p>
+<p>  比如说AU-4也就是AUG-1，加了9字节的指针后结构如下图所示。</p>
+<p>  <img src="/posts_img/pc_2/3.png" alt="image"></p>
+<p>  管理单元组可以是AUG-1，也可以是更高的，AUG-4、AUG-16…，如果是AUG-4那代表着里面可以放4个AU-4（AUG-1）。AU和AUG彼此之间也是按字节间插同步复用的方式把低阶的放到高阶的管理单元组中间去。</p>
+<p>  AU-n-PTR：用于指示VC-n净负荷的起点在AU帧中的位置。</p>
+<p>  管理单元组（AUG）：一个或多个在STM-N帧净负荷中固定地战友规定位置的AU集合称为管理单元组。</p>
+<p>  在管理单元组中最关键的就是指针AU-n-PTR，对于等级不一样的组它管理单元指针的大小也会不一样。总的来说，管理单元指针是用来指示其后面的信息净负荷的首字节在帧结构中具体的位置，用指针来随时进行记录与跟踪。</p>
+</li>
+<li><p>支路单元TU和支路单元组TUG</p>
+<p>  对于高阶信息才放到管理单元，而对于低阶信息，放的都是支路单元。</p>
+<p>  支路单元（TU）是提供低阶通道层和高阶通道层之间适配功能的一种信息结构。</p>
+<p>  TU的组成：有一个低阶VC-n和一个相应的支路单元指针构成。</p>
+<p>  TU-n-PRT：用于指示VC-n净负荷起点（首字节）在TU帧内的位置。</p>
+<p>  支路单元组（TUG）：一个或多个在高阶VC净负荷中占有固定位置的TU组成一个支路单元组（TUG）。</p>
+<p>  支路单元和管理单元可以类比，在这里就不再赘述。</p>
+</li>
+<li><p>各基本复用单元之间的关系</p>
+<p>  总结一下：对于一个PDH的四次群信息，它要经过码速调整放到一个C-4的容器中，然后加上一列通道开销POH，这样就构成了一个VC-4，在它的第四行加上一个9字节的指针AU-PTR，这样就构成了一个AU-4，然后再加上两个开销RSOH和MSOH，上三行用于对再生段进行操作维护管理的开销、下面是用于对复用段进行操作维护管理的开销，这样就构成了一个完整的STM-1的帧结构。</p>
+<p>  <img src="/posts_img/pc_2/4.png" alt="image"></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Fu Jiandong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/07/powerCommunication-2/">http://example.com/2025/01/07/powerCommunication-2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">JD's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BC%A0%E8%BE%93/">传输</a><a class="post-meta__tags" href="/tags/OTN/">OTN</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2025/01/02/CTF-1/" title="攻防世界web入门wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">攻防世界web入门wp</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/profile.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Fu Jiandong</div><div class="author-info-description">我的征途是石沉大海</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SDH"><span class="toc-number">1.</span> <span class="toc-text">SDH</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E7%94%A8%E6%98%A0%E5%B0%84"><span class="toc-number">1.2.</span> <span class="toc-text">复用映射</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/07/powerCommunication-2/" title="powerCommunication-2">powerCommunication-2</a><time datetime="2025-01-07T13:49:03.000Z" title="发表于 2025-01-07 21:49:03">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/CTF-1/" title="攻防世界web入门wp">攻防世界web入门wp</a><time datetime="2025-01-02T02:23:18.000Z" title="发表于 2025-01-02 10:23:18">2025-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/30/powerCommunication-1/" title="powerCommunication_1">powerCommunication_1</a><time datetime="2024-12-30T08:42:23.000Z" title="发表于 2024-12-30 16:42:23">2024-12-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/30/letter/" title="因为我太害羞了，所以没有把这封信寄出去">因为我太害羞了，所以没有把这封信寄出去</a><time datetime="2024-12-30T08:38:21.000Z" title="发表于 2024-12-30 16:38:21">2024-12-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/27/hello-world/" title="施工完毕！">施工完毕！</a><time datetime="2024-12-27T01:32:21.736Z" title="发表于 2024-12-27 09:32:21">2024-12-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/foot.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Fu Jiandong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
